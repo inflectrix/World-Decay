@@ -34,7 +34,7 @@ public class WorldDecay extends JavaPlugin {
         this.getCommand("decayreload").setExecutor(new Reload());
         this.logger = this.getLogger();
         this.saveDefaultConfig();
-        this.logger.log(Level.INFO, "World Decay v1.0 has been loaded!");
+        this.logger.log(Level.INFO, "World Decay v1.1 has been loaded!");
 
         new BukkitRunnable() {
             @Override
