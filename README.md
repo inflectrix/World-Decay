@@ -9,3 +9,4 @@
 ## Config
 - radius - The distance around the player that the blocks change
 - decaydelay - The time, in ticks, between block changed
+- protectspecblocks - Protects special blocks such as furnaces, beds, etc.
