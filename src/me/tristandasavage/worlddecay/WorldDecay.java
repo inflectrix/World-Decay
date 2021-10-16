@@ -40,8 +40,8 @@ public class WorldDecay extends JavaPlugin {
             @Override
             public void run() {
                 for(Player player : Bukkit.getOnlinePlayers()) {
-                    Block block = getNearbyBlocks(player.getLocation(), instance.getConfig().getInt("radius"));
-                    Block airblock = getNearbyAirBlocks(player.getLocation(), instance.getConfig().getInt("radius"));
+                    Block block = getRandNearbyBlock(player.getLocation(), instance.getConfig().getInt("radius"));
+                    Block airblock = getRandNearbyAir(player.getLocation(), instance.getConfig().getInt("radius"));
                     airblock.setType(block.getBlockData().getMaterial());
                     block.setType(Material.AIR);
                 }
@@ -54,7 +54,7 @@ public class WorldDecay extends JavaPlugin {
         this.logger.log(Level.INFO, "World Decay plugin unloaded");
     }
 
-    public static Block getNearbyBlocks(Location location, int radius) {
+    public static Block getRandNearbyBlock (Location location, int radius) {
         while(true) {
             int x = ThreadLocalRandom.current().nextInt((int)location.getX()-radius, (int)location.getX()+radius);
             int y = ThreadLocalRandom.current().nextInt((int)location.getY()-radius, (int)location.getY()+radius);
@@ -66,7 +66,7 @@ public class WorldDecay extends JavaPlugin {
         }
     }
 
-    public static Block getNearbyAirBlocks(Location location, int radius) {
+    public static Block getRandNearbyAir(Location location, int radius) {
         while(true) {
             Random rand = new Random();
             int x = ThreadLocalRandom.current().nextInt((int)location.getX()-radius, (int)location.getX()+radius);
