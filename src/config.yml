@@ -1,0 +1,2 @@
+decaydelay: 20 # Delay between block changes in ticks. There are 20 ticks/second.
+radius: 50 # The radius around the player in which blocks will be changed.

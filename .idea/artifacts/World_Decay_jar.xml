@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="World Decay:jar">
+    <output-path>$PROJECT_DIR$/../../Server/plugins</output-path>
+    <root id="archive" name="World Decay.jar">
+      <element id="module-output" name="World Decay" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Dependencies/spigot-api-1.17.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

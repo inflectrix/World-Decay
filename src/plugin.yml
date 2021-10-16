@@ -1,0 +1,15 @@
+main: me.tristandasavage.worlddecay.WorldDecay
+author: TristanDaSavage
+name: World-Decay
+version: 1.0
+api-version: 1.17
+description: The world decays around players
+
+commands:
+  decayreload:
+    description: Reloads the config
+    usage: /decayreload
+
+permissions:
+  decay.reload:
+    default: op
