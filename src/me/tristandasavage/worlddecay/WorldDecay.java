@@ -31,10 +31,9 @@ public class WorldDecay extends JavaPlugin {
 
     public void onEnable() {
         instance = this;
-        this.getCommand("decayreload").setExecutor(new Reload());
         this.logger = this.getLogger();
         this.saveDefaultConfig();
-        this.logger.log(Level.INFO, "World Decay v1.2-fixed-2 has been loaded!");
+        this.logger.log(Level.INFO, "World Decay v1.3 has been loaded!");
 
         new BukkitRunnable() {
             @Override
@@ -83,7 +82,7 @@ public class WorldDecay extends JavaPlugin {
     }
 
     public static Block getRandNearbyAir(Location location, int radius) {
-        while(true) {
+        for(int i=0;i<100000;i++) {
             Random rand = new Random();
             int x = ThreadLocalRandom.current().nextInt((int)location.getX()-radius, (int)location.getX()+radius);
             int y = ThreadLocalRandom.current().nextInt((int)location.getY()-radius, (int)location.getY()+radius);
@@ -93,5 +92,6 @@ public class WorldDecay extends JavaPlugin {
                 return block;
             }
         }
+        return null;
     }
 }

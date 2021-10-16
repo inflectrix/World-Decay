@@ -1,10 +1,6 @@
 # World Decay
- 
-## Commands
-- /decayreload - Reloads the config if you have changed it
 
-## Permissions
-- decay.reload - Access to /decayreload
+Watch the world slowly corrupt around you
 
 ## Config
 - radius - The distance around the player that the blocks change
