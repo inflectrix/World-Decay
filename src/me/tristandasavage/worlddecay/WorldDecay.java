@@ -34,16 +34,18 @@ public class WorldDecay extends JavaPlugin {
         this.getCommand("decayreload").setExecutor(new Reload());
         this.logger = this.getLogger();
         this.saveDefaultConfig();
-        this.logger.log(Level.INFO, "World Decay v1.3 has been loaded!");
+        this.logger.log(Level.INFO, "World Decay v1.2-fixed has been loaded!");
 
         new BukkitRunnable() {
             @Override
             public void run() {
-                for(Player player : Bukkit.getOnlinePlayers()) {
-                    Block block = getRandNearbyBlock(player.getLocation(), instance.getConfig().getInt("radius"));
-                    Block airblock = getRandNearbyAir(player.getLocation(), instance.getConfig().getInt("radius"));
-                    airblock.setType(block.getBlockData().getMaterial());
-                    block.setType(Material.AIR);
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    if(getRandNearbyBlock(player.getLocation(), instance.getConfig().getInt("radius")) != null) {
+                        Block block = getRandNearbyBlock(player.getLocation(), instance.getConfig().getInt("radius"));
+                        Block airblock = getRandNearbyAir(player.getLocation(), instance.getConfig().getInt("radius"));
+                        airblock.setType(block.getBlockData().getMaterial());
+                        block.setType(Material.AIR);
+                    }
                 }
             }
         }.runTaskTimer(instance, 20, instance.getConfig().getInt("decaydelay"));
@@ -54,35 +56,30 @@ public class WorldDecay extends JavaPlugin {
         this.logger.log(Level.INFO, "World Decay plugin unloaded");
     }
 
-    public static Block getRandNearbyBlock (Location location, int radius) {
-        while(true) {
-            int x = ThreadLocalRandom.current().nextInt((int)location.getX()-radius, (int)location.getX()+radius);
-            int y = ThreadLocalRandom.current().nextInt((int)location.getY()-radius, (int)location.getY()+radius);
-            int z = ThreadLocalRandom.current().nextInt((int)location.getZ()-radius, (int)location.getZ()+radius);
+    public static Block getRandNearbyBlock(Location location, int radius) {
+        for(int i=0;i<100000;i++) {
+            int x = ThreadLocalRandom.current().nextInt((int) location.getX() - radius, (int) location.getX() + radius);
+            int y = ThreadLocalRandom.current().nextInt((int) location.getY() - radius, (int) location.getY() + radius);
+            int z = ThreadLocalRandom.current().nextInt((int) location.getZ() - radius, (int) location.getZ() + radius);
             if (!location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial().isAir() && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BEDROCK) {
                 if (!instance.getConfig().getBoolean("protectspecblocks") && instance.getConfig().getBoolean("effectliquids")) {
                     return location.getWorld().getBlockAt(x, y, z);
-                }
-                else if(instance.getConfig().getBoolean("protectspecblocks")){
-                    if(location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BLACK_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BLUE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BROWN_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LIGHT_BLUE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CYAN_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.GRAY_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.GREEN_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LIGHT_GRAY_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LIME_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.MAGENTA_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ORANGE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.PINK_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.RED_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.YELLOW_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.WHITE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.PURPLE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.FURNACE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CHEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ENDER_CHEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CRAFTING_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.SMITHING_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ANVIL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CHIPPED_ANVIL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.DAMAGED_ANVIL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.GRINDSTONE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ENCHANTING_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BOOKSHELF && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.HOPPER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.STONECUTTER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BREWING_STAND && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.DISPENSER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.DROPPER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CARTOGRAPHY_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BEEHIVE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BEE_NEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.SMOKER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BLAST_FURNACE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BARREL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.TRAPPED_CHEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.SHULKER_BOX) {
-                        if(!instance.getConfig().getBoolean("effectliquids")) {
-                            if(location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.WATER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LAVA) {
+                } else if (instance.getConfig().getBoolean("protectspecblocks")) {
+                    if (location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BLACK_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BLUE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BROWN_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LIGHT_BLUE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CYAN_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.GRAY_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.GREEN_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LIGHT_GRAY_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LIME_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.MAGENTA_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ORANGE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.PINK_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.RED_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.YELLOW_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.WHITE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.PURPLE_BED && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.FURNACE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CHEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ENDER_CHEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CRAFTING_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.SMITHING_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ANVIL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CHIPPED_ANVIL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.DAMAGED_ANVIL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.GRINDSTONE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.ENCHANTING_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BOOKSHELF && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.HOPPER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.STONECUTTER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BREWING_STAND && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.DISPENSER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.DROPPER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.CARTOGRAPHY_TABLE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BEEHIVE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BEE_NEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.SMOKER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BLAST_FURNACE && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.BARREL && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.TRAPPED_CHEST && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.SHULKER_BOX) {
+                        if (!instance.getConfig().getBoolean("effectliquids")) {
+                            if (location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.WATER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LAVA) {
                                 return location.getWorld().getBlockAt(x, y, z);
                             }
-                            else {
-                                location.getWorld().getBlockAt(x, y, z).setType(Material.AIR);
-                                return location.getWorld().getBlockAt(x, y, z);
-                            }
-                        }
-                        else {
-                            return location.getWorld().getBlockAt(x, y, z);
                         }
                     }
+                } else if (!instance.getConfig().getBoolean("effectliquids")) {
+                    if (location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.WATER && location.getWorld().getBlockAt(x, y, z).getBlockData().getMaterial() != Material.LAVA) {
+                        return location.getWorld().getBlockAt(x, y, z);
+                    }
                 }
-
-
             }
         }
+        return null;
     }
 
     public static Block getRandNearbyAir(Location location, int radius) {
