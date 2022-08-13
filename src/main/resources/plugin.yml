@@ -1,6 +1,0 @@
-main: me.hypercodec.worlddecay.WorldDecay
-author: HyperCodec
-name: World-Decay
-version: 2.0
-api-version: 1.19
-description: The world decays around players, causing a cool glitchy effect

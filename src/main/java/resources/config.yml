@@ -1,6 +1,5 @@
 # The options are active and passive. Passive only works on newly generated worlds
 mode: active
-maxretries: 1000
 
 # These only work if mode: active
 
