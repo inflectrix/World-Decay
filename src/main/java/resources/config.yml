@@ -1,4 +1,16 @@
-decaydelay: 20 # Delay between block changes in ticks. There are 20 ticks/second. The fastest it can go is 20 blocks/second or 1 block/tick
-radius: 50 # The radius around the player in which blocks will be changed.
-protectspecblocks: true # Protect special blocks, such as furnaces, beds, etc. Options are true and false
-effectliquids: false # Stop from using liquids, which take over and lag out the server at high altitudes
+# The options are active and passive. Passive only works on newly generated worlds
+mode: active
+
+# These only work if mode: active
+
+# Delay between block changes in ticks. There are 20 ticks/second. The fastest it can go is 20 blocks/second or 1 block/tick
+decaydelay: 20
+# The radius around the player in which blocks will be changed.
+radius: 50
+
+
+
+# Protect special blocks, such as furnaces, beds, etc. Options are true and false
+protectspecblocks: true
+# Stop from using liquids, which take over and lag out the server at high altitudes
+effectliquids: false

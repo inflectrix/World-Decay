@@ -1,6 +1,6 @@
-main: main.java.worlddecay.WorldDecay
-author: TristanDaSavage
+main: me.hypercodec.worlddecay.WorldDecay
+author: HyperCodec
 name: World-Decay
-version: 1.3
-api-version: 1.17
-description: The world decays around players
+version: 2.0
+api-version: 1.19
+description: The world decays around players, causing cool glitchy effect
