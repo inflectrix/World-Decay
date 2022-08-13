@@ -1,4 +1,4 @@
-main: me.tristandasavage.worlddecay.WorldDecay
+main: main.java.worlddecay.WorldDecay
 author: TristanDaSavage
 name: World-Decay
 version: 1.3
