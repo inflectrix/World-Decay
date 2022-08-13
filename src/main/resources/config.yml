@@ -1,0 +1,58 @@
+# The options are active and passive. Passive only works on newly generated worlds
+mode: active
+maxretries: 1000
+
+# These only work if mode: active
+
+# Delay between block changes in ticks. There are 20 ticks/second. The fastest it can go is 20 blocks/second or 1 block/tick
+decaydelay: 20
+# The radius around the player in which blocks will be changed.
+radius: 50
+
+# Protect special blocks, such as furnaces, beds, etc. Options are true and false
+protectspecblocks: true
+# Stop from using liquids, which take over and lag out the server at high altitudes
+effectliquids: false
+
+
+# List of blocks protected if protectspecblocks is true
+specblocks:
+  - BLACK_BED
+  - BLUE_BED
+  - BROWN_BED
+  - LIGHT_BLUE_BED
+  - CYAN_BED
+  - GRAY_BED
+  - GREEN_BED
+  - LIGHT_GRAY_BED
+  - LIME_BED
+  - MAGENTA_BED
+  - ORANGE_BED
+  - PINK_BED
+  - RED_BED
+  - YELLOW_BED
+  - WHITE_BED
+  - PURPLE_BED
+  - FURNACE
+  - CHEST
+  - ENDER_CHEST
+  - CRAFTING_TABLE
+  - SMITHING_TABLE
+  - GRINDSTONE
+  - ENCHANTING_TABLE
+  - ANVIL
+  - CHIPPED_ANVIL
+  - DAMAGED_ANVIL
+  - HOPPER
+  - STONECUTTER
+  - BREWING_STAND
+  - DISPENSER
+  - DROPPER
+  - CARTOGRAPHY_TABLE
+  - BEEHIVE
+  - BEE_NEST
+  - SMOKER
+  - BLAST_FURNACE
+  - BARREL
+  - TRAPPED_CHEST
+  - SHULKER_BOX
